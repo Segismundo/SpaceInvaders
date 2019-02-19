@@ -14,11 +14,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 
-    // if you want to use the opinionated config
-    apply plugin: 'org.ajoberstar.release-opinion'
-
-    // if you want to configure it to your preferences
-    apply plugin: 'org.ajoberstar.release-base'
 }
 
 plugins {
