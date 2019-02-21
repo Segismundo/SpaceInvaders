@@ -44,6 +44,7 @@ public class MayorActivity extends Activity {
     }
 
 
-
-
+    public SpaceInvadersJuego getSpaceInvadersJuego() {
+        return spaceInvadersJuego;
+    }
 }
