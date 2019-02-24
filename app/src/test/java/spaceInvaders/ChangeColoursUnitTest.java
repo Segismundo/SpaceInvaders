@@ -1,15 +1,19 @@
 package spaceInvaders;
 
+
+import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Context;
+import org.junit.Before;
+import org.junit.Test;
 import android.content.Intent;
 
-import org.junit.Test;
 
-import spaceInvaders.Activities.MainActivity;
 import spaceInvaders.Activities.MayorActivity;
 
 import static org.junit.Assert.*;
 
-public class ChangeColoursUnitTest {
+public class ChangeColoursUnitTest extends AppCompatActivity {
 
     private String before;
     private String after;
@@ -17,17 +21,41 @@ public class ChangeColoursUnitTest {
     private MayorActivity activity;
 
 
-    @Test
-    public void changeColoursAlienTest(){
+    @Before
+    public void iniciar(){
         activity = new MayorActivity();
+        Intent mayor = new Intent(activity, activity.getClass());
+        startActivity(mayor);
+    }
+
+    @Test
+    public void actualizar() {
+        assertNotNull(activity.getSpaceInvadersJuego().getAliens());
+        before= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
+        activity.getSpaceInvadersJuego().getAliens().get(0).cambiarColorRandom();
+        after= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
+        finish();
+    }
+
+    @Test
+    public void testColor() {
+        colours= areSame(before,after);
+        assertTrue(colours);
+    }
+
+    /*@Test
+    public void changeColoursAlienTest(){
         colours=false;
 
-        /*Intent mayor = new Intent(new MainActivity(), activity.getClass());
-        startActivity(mayor);*/
+        Intent mayor = new Intent(activity, activity.getClass());
+        startActivity(mayor);
 
         before= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
         activity.getSpaceInvadersJuego().getAliens().get(0).cambiarColorRandom();
         after= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
+
+        finish();
+
         colours= areSame(before,after);
 
 
@@ -40,8 +68,8 @@ public class ChangeColoursUnitTest {
         activity = new MayorActivity();
         colours=false;
 
-        /*Intent mayor = new Intent(new MainActivity(), activity.getClass());
-        startActivity(mayor);*/
+        Intent mayor = new Intent(new MainActivity(), activity.getClass());
+        startActivity(mayor);
 
         before= activity.getSpaceInvadersJuego().getNave().getColor();
         activity.getSpaceInvadersJuego().getNave().colorRandomNave();
@@ -50,7 +78,7 @@ public class ChangeColoursUnitTest {
 
         assertTrue(colours);
 
-    }
+    }*/
 
     public boolean areSame(String colour1, String colour2){
         return !colour1.equals(colour2);
