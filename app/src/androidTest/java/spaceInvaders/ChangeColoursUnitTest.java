@@ -26,7 +26,7 @@ public class ChangeColoursUnitTest extends AppCompatActivity {
 
 
     @Before
-    public void Iniciar(){
+    public void iniciar(){
         activity = new MayorActivity();
         Intent mayor = new Intent(activity, activity.getClass());
         startActivity(mayor);
