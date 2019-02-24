@@ -7,3 +7,11 @@ android:
   components:
     - build-tools-28.0.3
     - android-28
+jobs:
+  include:
+    - stage: test
+      script: ./test 1
+    
+      script: ./test 2
+    - stage: deploy
+      script: ./deploy
