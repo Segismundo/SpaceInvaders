@@ -6,8 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.media.MediaPlayer;
+import android.support.v4.content.ContextCompat;
 
 import com.spaceInvaders.android.R;
 import spaceInvaders.SpaceInvadersJuego;
@@ -25,6 +28,10 @@ public class Nave extends ObjetoVisible {
     //Estado de la nave
     private EstadoNave estadoNave;
 
+    //Color nave
+    private Paint navepaint;
+    private String color;
+
     //Dimensiones de la pantalla
     private int screenX;
     private int screenY;
@@ -35,9 +42,13 @@ public class Nave extends ObjetoVisible {
 
     private MediaPlayer sonido;
 
+    private Context context;
+
     public Nave(Context context, int screenX, int screenY, float velocidad, SpaceInvadersJuego sij) {
 
         this.spaceInvadersJuego = sij;
+
+        this.context=context;
 
         sonido = MediaPlayer.create(context, R.raw.teletransporte);
 
@@ -69,6 +80,10 @@ public class Nave extends ObjetoVisible {
         this.velocidad = (velocidad / 7);
 
         estadoNave = EstadoNave.Parada;
+
+        navepaint = new Paint();
+        navepaint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(context, R.color.verde), PorterDuff.Mode.SRC_IN));
+        color="verde";
     }
 
     @Override
@@ -145,7 +160,7 @@ public class Nave extends ObjetoVisible {
     @Override
     public void draw(Canvas canvas, Paint paint) {
         if (activo) {
-            canvas.drawBitmap(bitmap, getPosition().x, getPosition().y, paint);
+            canvas.drawBitmap(bitmap, getPosition().x, getPosition().y, navepaint);
         }
     }
 
@@ -161,6 +176,20 @@ public class Nave extends ObjetoVisible {
     @Override
     public boolean activo() {
         return activo;
+    }
+
+    public void colorRandomNave(){
+        if(color.equals("verde")){
+            navepaint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(context, R.color.morado), PorterDuff.Mode.SRC_IN));
+            color="morado";
+        }else{
+            navepaint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(context, R.color.verde), PorterDuff.Mode.SRC_IN));
+            color="verde";
+        }
+    }
+
+    public String getColor(){
+        return color;
     }
 
 }

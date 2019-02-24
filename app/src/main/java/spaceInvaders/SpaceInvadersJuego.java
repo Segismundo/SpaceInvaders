@@ -78,6 +78,10 @@ public class SpaceInvadersJuego extends SurfaceView implements Runnable {
         return aliens;
     }
 
+    public Nave getNave(){
+        return nave;
+    }
+
     private MediaPlayer musica;
 
     public SpaceInvadersJuego(Context context, Point point, boolean mayor, boolean rebotes, Activity activity, String nombre) {
