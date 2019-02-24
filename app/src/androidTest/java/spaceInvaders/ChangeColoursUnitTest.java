@@ -4,6 +4,7 @@ package spaceInvaders;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import android.content.Intent;
@@ -22,7 +23,8 @@ public class ChangeColoursUnitTest extends AppCompatActivity {
 
 
     @Before
-    public void iniciar(){
+    public void Iniciar(){
+
         activity = new MayorActivity();
         Intent mayor = new Intent(activity, activity.getClass());
         startActivity(mayor);
@@ -38,7 +40,7 @@ public class ChangeColoursUnitTest extends AppCompatActivity {
     }
 
     @Test
-    public void testColor() {
+    public void actualizarColor() {
         colours= areSame(before,after);
         assertTrue(colours);
     }
@@ -61,14 +63,14 @@ public class ChangeColoursUnitTest extends AppCompatActivity {
 
         assertTrue(colours);
 
-    }
+    }*/
 
     @Test
     public void changeColoursNaveTest(){
         activity = new MayorActivity();
         colours=false;
 
-        Intent mayor = new Intent(new MainActivity(), activity.getClass());
+        Intent mayor = new Intent(activity, activity.getClass());
         startActivity(mayor);
 
         before= activity.getSpaceInvadersJuego().getNave().getColor();
@@ -76,9 +78,11 @@ public class ChangeColoursUnitTest extends AppCompatActivity {
         after= activity.getSpaceInvadersJuego().getNave().getColor();
         colours= areSame(before,after);
 
+        finish();
+
         assertTrue(colours);
 
-    }*/
+    }
 
     public boolean areSame(String colour1, String colour2){
         return !colour1.equals(colour2);
