@@ -27,7 +27,7 @@ android:
 before_deploy:
 - cd -
 - sh set_tags.sh
-
+ - chmod +x gradlew
 script:
 - cd app
 - chmod +x gradlew
