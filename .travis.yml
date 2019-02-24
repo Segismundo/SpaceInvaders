@@ -29,7 +29,7 @@ before_deploy:
 - sh set_tags.sh
 
 script:
-- cd App
+- cd app
 - chmod +x gradlew
 - "./gradlew clean build"
 
