@@ -10,36 +10,45 @@ import spaceInvaders.Activities.MayorActivity;
 import static org.junit.Assert.*;
 
 public class ChangeColoursUnitTest {
+
+    private String before;
+    private String after;
+    private boolean colours;
+    MayorActivity activity;
+
+
     @Test
     public void changeColoursAlienTest(){
-        MayorActivity activity = new MayorActivity();
+        activity = new MayorActivity();
+        colours=false;
 
         /*Intent mayor = new Intent(new MainActivity(), activity.getClass());
         startActivity(mayor);*/
 
-        String beforeAlien= activity.getSpaceInvadersJuego().getAliens().get(1).getColor();
-        activity.getSpaceInvadersJuego().getAliens().get(1).cambiarColorRandom();
-        String afterAlien= activity.getSpaceInvadersJuego().getAliens().get(1).getColor();
-        boolean coloursAlien= areSame(beforeAlien,afterAlien);
+        before= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
+        activity.getSpaceInvadersJuego().getAliens().get(0).cambiarColorRandom();
+        after= activity.getSpaceInvadersJuego().getAliens().get(0).getColor();
+        colours= areSame(before,after);
 
 
-        assertTrue(coloursAlien);
+        assertTrue(colours);
 
     }
 
     @Test
     public void changeColoursNaveTest(){
-        MayorActivity activity = new MayorActivity();
+        activity = new MayorActivity();
+        colours=false;
 
         /*Intent mayor = new Intent(new MainActivity(), activity.getClass());
         startActivity(mayor);*/
 
-        String beforeNave= activity.getSpaceInvadersJuego().getNave().getColor();
+        before= activity.getSpaceInvadersJuego().getNave().getColor();
         activity.getSpaceInvadersJuego().getNave().colorRandomNave();
-        String afterNave= activity.getSpaceInvadersJuego().getNave().getColor();
-        boolean coloursNave= areSame(beforeNave,afterNave);
+        after= activity.getSpaceInvadersJuego().getNave().getColor();
+        colours= areSame(before,after);
 
-        assertTrue(coloursNave);
+        assertTrue(colours);
 
     }
 
