@@ -14,7 +14,7 @@ public class ChangeColoursUnitTest {
     private String before;
     private String after;
     private boolean colours;
-    MayorActivity activity;
+    private MayorActivity activity;
 
 
     @Test
