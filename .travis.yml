@@ -27,12 +27,14 @@ android:
 before_deploy:
 - cd -
 - sh set_tags.sh
- - chmod +x gradlew
+
 script:
 - cd app
+- chmod +x ./gradlew build connectedCheck
 - chmod +x gradlew
 - "./gradlew clean build"
 
+ 
 deploy:
   provider: releases
   api_key:
