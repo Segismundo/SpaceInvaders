@@ -1,6 +1,6 @@
 sudo: required
 language: android
-jdk: 1.8
+jdk: 1.8.0
 
 before_cache:
 - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
