@@ -28,10 +28,14 @@ before_deploy:
 - cd -
 - sh set_tags.sh
 
-script:
-- chmod +x ./gradlew build connectedCheck
+before_install:
 - chmod +x gradlew
-- "./gradlew clean build"
+- yes | sdkmanager "platforms;android-28"
+
+script:
+- ./gradlew clean
+- ./gradlew assembleDebug
+- ./gradlew assembleDebugAndroidTest
 
  
 deploy:
