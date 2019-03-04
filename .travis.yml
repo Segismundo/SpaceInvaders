@@ -10,9 +10,7 @@ cache:
    - $HOME/.gradle/caches
    - $HOME/.gradle/wrapper/
 
-env:
-  global:
-  -
+
 android:
   components:
   - platform-tools
